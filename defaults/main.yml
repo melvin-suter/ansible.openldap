@@ -15,4 +15,4 @@ openldap_users:
   givenName: Test
   surName: Example
   mail: test@example.org
-  password: changeme
+  userPassword: changeme

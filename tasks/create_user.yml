@@ -6,9 +6,9 @@
 
 - name: Assign variables
   set_fact:
+    openldap_userPassword: "{{ command_output.stdout }}"
     openldap_default_user:
       loginShell: /bin/bash
-      userPassword: "{{ command_output.stdout }}"
       cn: "{{ item.uid }}"
       homeDirectory: /home/{{ item.uid }}
       gecos: "{{ item.uid }}"
@@ -18,7 +18,7 @@
 
 - name: merging variables
   set_fact: 
-    openldap_usersettings: "{{ openldap_default_user | combine(item) | combine({'password' : ''}, recursive=True ) }}"
+    openldap_usersettings: "{{ openldap_default_user | combine(item) | combine({'userPassword' : openldap_userPassword}, recursive=True ) }}"
 
 - name: Create ldap entry
   ldap_entry:
