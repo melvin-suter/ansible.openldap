@@ -7,10 +7,10 @@
 - name: Assign variables
   set_fact:
     openldap_default_user:
+      loginShell: /bin/bash
       userPassword: "{{ command_output.stdout }}"
       cn: {{ item.uid }}
       homeDirectory: /home/{{ item.uid }}
-      loginShell: /bin/bash
       gecos: {{ item.uid }}
       shadowLastChange: 0
       shadowMax: 0
