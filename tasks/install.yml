@@ -31,8 +31,13 @@
   - path: "{{ openldap_log }}"
     selinux: slapd_log_t
 
-
 - name: Apply SELinux Rules
   command: restorecon -ir /srv
+
+- name: Start service
+  systemd:
+    name: "slapd"
+    state: started
+    enabled: yes
 
 
