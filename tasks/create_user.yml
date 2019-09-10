@@ -1,7 +1,7 @@
 ---
 
 - name: Generate Password
-  command: slappasswd -s "{{ item.password }}"
+  command: slappasswd -s "{{ item.userPassword }}"
   register: command_output
 
 - name: Assign variables
