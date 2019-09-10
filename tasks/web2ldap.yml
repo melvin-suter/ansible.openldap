@@ -1,0 +1,9 @@
+---
+- name: Install Dep.
+  yum:
+    name: "{{ openldap_web2ldap_packages }}"
+    state: present
+
+- name: Install web2ldap
+  command: pip3 install web2ldap
+

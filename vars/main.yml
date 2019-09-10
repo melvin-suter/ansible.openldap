@@ -21,3 +21,7 @@ openldap_schemas:
 - /etc/openldap/schema/nis.ldif
 - /etc/openldap/schema/inetorgperson.ldif
 
+# web2ldap
+openldap_web2ldap_packages:
+- python36-pip
+- python36-devel
