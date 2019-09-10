@@ -4,6 +4,9 @@
     name: "{{ openldap_web2ldap_packages }}"
     state: present
 
+- name: Upgrade pip
+  command: pip install --upgrade pip
+
 - name: Install web2ldap
   command: pip3 install web2ldap
 
