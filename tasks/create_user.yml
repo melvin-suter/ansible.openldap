@@ -26,7 +26,6 @@
     objectClass:
       - inetOrgPerson
       - top
-      - account
       - posixAccount
       - shadowAccount
     attributes: "{{ openldap_usersettings }}"
