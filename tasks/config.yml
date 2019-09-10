@@ -72,7 +72,7 @@
 
 - name: Create Tmp File
   template:
-    src: templates/baseldapdaomin.ldif.j2
+    src: templates/baseldapdomain.ldif.j2
     dest: "{{ openldap_tmpldif }}"
 
 - name: Apply Domain Settings
