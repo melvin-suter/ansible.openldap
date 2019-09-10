@@ -78,6 +78,7 @@
 
 - name: Apply Base Settings
   command: ldapadd -x -D cn=Admins,{{ openldap_domain }} -w "{{ openldap_rootpw }}" -f {{ openldap_tmpldif }} 
+  ignore_errors: yes # fails on duplicate
 
 - name: Delete Tmp File
   file:
