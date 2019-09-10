@@ -47,6 +47,7 @@
 
 - name: Import Basic Schemas
   command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ item }}
+  ignore_errors: yes # fails on duplicate 
   with_items: "{{ openldap_schemas }}"
 
 #############

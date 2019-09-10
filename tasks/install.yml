@@ -9,6 +9,7 @@
     port: 389/tcp
     state: enabled
     permanent: yes
+    immediate: yes
 
 - name: Create Folders
   file:
