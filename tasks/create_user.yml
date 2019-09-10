@@ -6,11 +6,8 @@
 
 - name: Assign variables
   set_fact:
-    openldap_pwhash: "{{ command_output.stdout }}"
     openldap_default_user:
-
-    openldap_default_user:
-      userPassword: "{{ openldap_pwhash }}"
+      userPassword: "{{ command_output.stdout }}"
       cn: {{ item.uid }}
       homeDirectory: /home/{{ item.uid }}
       loginShell: /bin/bash
