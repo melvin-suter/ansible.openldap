@@ -3,6 +3,7 @@
 openldap_packages:
 - openldap
 - openldap-servers
+- openldap-clients
 
 # Paths
 openldap_tmpldif: /tmp/ldap.ldif
