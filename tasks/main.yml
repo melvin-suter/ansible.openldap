@@ -3,3 +3,4 @@
 
 - import_tasks: install.yml
 - import_tasks: config.yml
+- import_tasks: web2ldap.yml
