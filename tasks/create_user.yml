@@ -18,7 +18,7 @@
 
 - name: merging variables
   set_fact: 
-    openldap_usersettings: "{{ openldap_default_user | combine(item) | combine({'password' : ''}, recursive=True }}"
+    openldap_usersettings: "{{ openldap_default_user | combine(item) | combine({'password' : ''}, recursive=True ) }}"
 
 - name: Create ldap entry
   ldap_entry:
