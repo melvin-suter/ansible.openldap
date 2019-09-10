@@ -21,7 +21,7 @@ olcRootPW: {{ openldap_rootpw_hash }}
 
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
-add: olcAccess
+replace: olcAccess
 olcAccess: {0}to attrs=userPassword,shadowLastChange by
   dn="cn=Admins,{{ openldap_domain }}" write by anonymous auth by self write by * none
 olcAccess: {1}to dn.base="" by * read
