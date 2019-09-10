@@ -1,4 +1,5 @@
 ---
+
 # Domain
 openldap_domain: dc=example,dc=org
 openldap_dc: example
@@ -6,3 +7,12 @@ openldap_o: example org
 
 # Root PW
 openldap_rootpw: ChangeMe
+
+# Users
+# openldap_users_remove: []
+openldap_users:
+- uid: exmp
+  givenName: Test
+  surName: Example
+  mail: test@example.org
+  password: changeme

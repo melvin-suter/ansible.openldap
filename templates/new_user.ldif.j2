@@ -1,0 +1,19 @@
+dn: uid={{ item.username }},ou=Users,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: {{ item.username }}
+sn: {{ item.surName }} 
+givenName: {{ item.givenName }} 
+uid: {{ item.username }}
+# idNumber: 1005
+# gidNumber: 1005
+homeDirectory: /home/{{ item.username }}
+userPassword: {{ openldap_pwhash }}
+loginShell: /bin/bash
+gecos: {{ item.username }}
+shadowLastChange: 0
+shadowMax: 0
+shadowWarning: 0

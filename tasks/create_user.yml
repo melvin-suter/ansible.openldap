@@ -1,0 +1,41 @@
+---
+
+- name: Generate Password
+  command: slappasswd -s "{{ item.password }}"
+  register: command_output
+
+- name: Assign variables
+  set_fact:
+    openldap_pwhash: "{{ command_output.stdout }}"
+    openldap_default_user:
+
+    openldap_default_user:
+      userPassword: "{{ openldap_pwhash }}"
+      cn: {{ item.uid }}
+      homeDirectory: /home/{{ item.uid }}
+      loginShell: /bin/bash
+      gecos: {{ item.uid }}
+      shadowLastChange: 0
+      shadowMax: 0
+      shadowWarning: 0 
+
+- name: merging variables
+  set_fact: 
+    openldap_usersettings: "{{ openldap_default_user | combine(item) }}"
+
+- name: deleting password
+  set_fact: 
+    openldap_usersettings.password:
+
+- name: Create ldap entry
+  ldap_entry:
+    dn: uid={{ item.uid }},ou=Users,{{ openldap_domain }}
+    objectClass:
+      - inetOrgPerson
+      - top
+      - account
+      - posixAccount
+      - shadowAccount
+    attributes: "{{ openldap_usersettings }}"
+
+
