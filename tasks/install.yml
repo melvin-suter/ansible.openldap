@@ -4,12 +4,6 @@
     name: "{{ openldap_packages }}"
     state: present
 
-- name: Start service
-  systemd:
-    name: "slapd"
-    state: restarted
-    enabled: yes
-
 - name: Setup Firewall
   firewalld:
     port: 389/tcp
