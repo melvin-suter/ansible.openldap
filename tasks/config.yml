@@ -76,7 +76,7 @@
     src: templates/baseldapdomain.ldif.j2
     dest: "{{ openldap_tmpldif }}"
 
-- name: Apply Domain Settings
+- name: Apply Base Settings
   command: ldapadd -Y EXTERNAL -x -D cn=Admins,{{ openldap_domain }} -W -f {{ openldap_tmpldif }} 
 
 - name: Delete Tmp File

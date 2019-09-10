@@ -1,6 +1,8 @@
 ---
 # Domain
 openldap_domain: dc=example,dc=org
+openldap_dc: example
+openldap_o: example org
 
 # Root PW
 openldap_rootpw: ChangeMe
