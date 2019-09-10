@@ -1,0 +1,20 @@
+dn: {{ openldap_domain }}
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+o: example com
+dc: example
+
+dn: cn=Admins,{{ openldap_domain }}
+objectClass: organizationalRole
+cn: Admins
+description: Directory Admins
+
+dn: ou=Users,{{ openldap_domain }}
+objectClass: organizationalUnit
+ou: Users
+
+dn: ou=Groups,{{ openldap_domain }}
+objectClass: organizationalUnit
+ou: Groups
+

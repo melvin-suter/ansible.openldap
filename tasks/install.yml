@@ -1,0 +1,27 @@
+---
+- name: Install packages
+  yum:
+    name: "{{ openldap_packages }}"
+    state: present
+
+- name: Start service
+  systemd:
+    name: "slapd"
+    state: restarted
+    enabled: yes
+
+- name: Setup Firewall
+  firewalld:
+    port: 389/tcp
+    state: enabled
+    permanent: yes
+
+- name: Create Folders
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ openldap_user }}"
+    group: "{{ openldap_group }}"
+  with_items:
+  - "{{ openldap_db }}"
+  - "{{ openldap_log }}"
