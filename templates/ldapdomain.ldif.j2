@@ -16,7 +16,7 @@ olcRootDN: cn=Admins,{{ openldap_domain }}
 
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
-add: olcRootPW
+replace: olcRootPW
 olcRootPW: {{ openldap_rootpw_hash }}
 
 dn: olcDatabase={2}hdb,cn=config
