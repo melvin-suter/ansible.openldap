@@ -7,8 +7,11 @@ dc: {{ openldap_dc }}
 
 dn: cn=Admins,{{ openldap_domain }}
 objectClass: organizationalRole
+objectClass: top
+objectClass: posixGroup
 cn: Admins
 description: Directory Admins
+gidNumber: 1001
 
 dn: ou=Users,{{ openldap_domain }}
 objectClass: organizationalUnit

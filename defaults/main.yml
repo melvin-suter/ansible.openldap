@@ -16,3 +16,5 @@ openldap_users:
   surName: Example
   mail: test@example.org
   userPassword: changeme
+  uidNumber: 1001
+  gidNumber: 1001
