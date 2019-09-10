@@ -20,9 +20,11 @@
   set_fact: 
     openldap_usersettings: "{{ openldap_default_user | combine(item) | combine({'userPassword' : openldap_userPassword}, recursive=True ) }}"
 
-- name: Create ldap entry
+- name: Create ldap user
   ldap_entry:
     dn: uid={{ item.uid }},ou=Users,{{ openldap_domain }}
+    bind_dn: cn=Admins,{{ openldap_domain }}
+    bind_pw: "{{ openldap_rootpw }}"
     objectClass:
       - inetOrgPerson
       - top
