@@ -2,8 +2,8 @@ dn: {{ openldap_domain }}
 objectClass: top
 objectClass: dcObject
 objectclass: organization
-o: example com
-dc: example
+o: {{ openldap_o }}
+dc: {{ openldap_dc }}
 
 dn: cn=Admins,{{ openldap_domain }}
 objectClass: organizationalRole
