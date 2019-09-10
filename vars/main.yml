@@ -4,6 +4,7 @@ openldap_packages:
 - openldap
 - openldap-servers
 - openldap-clients
+- python-ldap
 
 # Paths
 openldap_tmpldif: /tmp/ldap.ldif
