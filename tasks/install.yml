@@ -25,3 +25,20 @@
   with_items:
   - "{{ openldap_db }}"
   - "{{ openldap_log }}"
+
+- name: Set Selinux Context
+  sefcontext:
+    target: "{{ item.path }}(/.*)?"
+    setype: "{{ item.selinux }}"
+    state: present
+  with_items:
+  - path: "{{ openldap_db }}"
+    selinux: slapd_db_t
+  - path: "{{ openldap_log }}"
+    selinux: slapd_log_t
+
+
+- name: Apply SELinux Rules
+  command: restorecon -ir /srv
+
+
