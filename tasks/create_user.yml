@@ -9,9 +9,9 @@
     openldap_default_user:
       loginShell: /bin/bash
       userPassword: "{{ command_output.stdout }}"
-      cn: {{ item.uid }}
+      cn: "{{ item.uid }}"
       homeDirectory: /home/{{ item.uid }}
-      gecos: {{ item.uid }}
+      gecos: "{{ item.uid }}"
       shadowLastChange: 0
       shadowMax: 0
       shadowWarning: 0 
