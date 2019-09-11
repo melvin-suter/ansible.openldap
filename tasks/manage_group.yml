@@ -19,6 +19,6 @@
       - top
       - posixGroup
     attributes: "{{ openldap_groupsetting }}"
-    state: "{{ item.state | default('present' }}"
+    state: "{{ item.state | default('present') }}"
 
 
