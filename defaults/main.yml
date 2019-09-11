@@ -10,6 +10,11 @@ openldap_rootpw: ChangeMe
 
 # Users
 # openldap_users_remove: []
+openldap_groups:
+- cn: Admins
+  gidNumber: 1001
+  description: Administrators
+  
 openldap_users:
 - uid: exmp
   givenName: Test
