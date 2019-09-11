@@ -9,7 +9,6 @@ openldap_o: example org
 openldap_rootpw: ChangeMe
 
 # Users
-# openldap_users_remove: []
 openldap_groups:
 - cn: Admins
   gidNumber: 1001
