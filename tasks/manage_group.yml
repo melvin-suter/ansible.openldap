@@ -18,6 +18,7 @@
     objectClass:
       - top
       - posixGroup
+      - groupofuniquenames
     attributes: "{{ openldap_groupsetting }}"
     state: "{{ item.state | default('present') }}"
 
