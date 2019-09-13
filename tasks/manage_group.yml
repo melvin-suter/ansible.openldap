@@ -12,7 +12,7 @@
 
 - name: Modify ldap group
   ldap_entry:
-    dn: cn={{ item.cn }},ou=Users,{{ openldap_domain }}
+    dn: cn={{ item.cn }},{{ openldap_group_ou }}
     bind_dn: cn=Admin,{{ openldap_domain }}
     bind_pw: "{{ openldap_rootpw }}"
     objectClass:

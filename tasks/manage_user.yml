@@ -22,7 +22,7 @@
 
 - name: Modify ldap user
   ldap_entry:
-    dn: uid={{ item.uid }},ou=Users,{{ openldap_domain }}
+    dn: uid={{ item.uid }},{{ openldap_user_ou }}
     bind_dn: cn=Admin,{{ openldap_domain }}
     bind_pw: "{{ openldap_rootpw }}"
     objectClass:

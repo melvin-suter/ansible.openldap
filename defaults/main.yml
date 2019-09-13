@@ -8,6 +8,15 @@ openldap_o: example org
 # Root PW
 openldap_rootpw: ChangeMe
 
+# OUs
+openldap_ous:
+- Users
+- Groups
+- Special Users
+
+openldap_user_ou: ou=Users,{{ openldap_domain }}
+openldap_group_ou: ou=Groups,{{ openldap_domain }}
+
 # Users
 openldap_groups:
 - cn: Admins

@@ -11,11 +11,10 @@ objectClass: top
 cn: Admin
 description: Directory Admin
 
-dn: ou=Users,{{ openldap_domain }}
+{% for ou in openldap_ous %}
+dn: ou={{ ou }},{{ openldap_domain }}
 objectClass: organizationalUnit
-ou: Users
+ou: {{ ou }}
 
-dn: ou=Groups,{{ openldap_domain }}
-objectClass: organizationalUnit
-ou: Groups
+{% endfor %}
 
