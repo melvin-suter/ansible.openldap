@@ -17,8 +17,8 @@
     bind_pw: "{{ openldap_rootpw }}"
     objectClass:
       - top
-      - posixGroup
-      - groupofuniquenames
+      # - posixGroup
+      - groupOfUniqueNames 
     attributes: "{{ openldap_groupsetting }}"
     state: "{{ item.state | default('present') }}"
 
