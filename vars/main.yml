@@ -16,9 +16,4 @@ openldap_dbconfig: /var/lib/ldap/DB_CONFIG
 openldap_user: ldap
 openldap_group: ldap
 
-# Schemas
-openldap_schemas:
-- /etc/openldap/schema/cosine.ldif
-- /etc/openldap/schema/nis.ldif
-- /etc/openldap/schema/inetorgperson.ldif
 

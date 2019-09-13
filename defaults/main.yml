@@ -1,5 +1,11 @@
 ---
 
+# Schemas
+openldap_schemas:
+- /etc/openldap/schema/cosine.ldif
+- /etc/openldap/schema/nis.ldif
+- /etc/openldap/schema/inetorgperson.ldif
+
 # Domain
 openldap_domain: dc=example,dc=org
 openldap_dc: example
