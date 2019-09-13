@@ -9,3 +9,6 @@
 
 - include_tasks: manage_group.yml
   with_items: "{{ openldap_groups }}"
+
+- include_tasks: manage_ou.yml
+  with_items: "{{ openldap_ous }}"
