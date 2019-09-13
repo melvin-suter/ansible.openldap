@@ -14,30 +14,37 @@ openldap_ous:
 - Groups
 - Special Users
 
-openldap_user_ou: ou=Users,{{ openldap_domain }}
-openldap_specialuser_ou: ou=Special Users,{{ openldap_domain }}
-openldap_group_ou: ou=Groups,{{ openldap_domain }}
+openldap_entries:
+- dn: cn=LDAPPosix,ou=Groups,{{ openldap_domain}}
+  objectClass:
+  - top
+  - posixGroup
+  attributes:
+    cn: LDAPPosix
+    gidNumber: 1001
+    description: All Posix Users                                                                                                       
 
-# Users
-openldap_groups:
-- cn: Admins
-  gidNumber: 1001
-  description: Administrators
-  
 openldap_users:
-- uid: exmp
-  givenName: Test
-  surName: Example
-  mail: test@example.org
-  userPassword: changeme
-  uidNumber: 1001
-  gidNumber: 1001
+- dn: uid=kolab-service,ou=Special Users,{{ openldap_domain}}
+  objectClass:
+  - organizationalRole
+  - top
+  userPassword: ChangeMe 
+  attributes:
+    cn: kolab-service
 
-openldap_specialusers:
-- uid: exmp
-  givenName: Test
-  surName: Example
-  mail: test@example.org
-  userPassword: changeme
-  uidNumber: 1001
-  gidNumber: 1001
+- dn: uid=example,ou=Users,{{ openldap_domain}}
+  objectClass:
+  - inetOrgPerson
+  - top
+  - posixAccount
+  - shadowAccount
+  userPassword: ChangeMe
+  attributes:
+    cn: example 
+    givenName: Test
+    surName: Example
+    mail: test@example.org
+    uidNumber: 1001
+    gidNumber: 1001
+

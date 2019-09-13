@@ -7,11 +7,8 @@
 - include_tasks: manage_user.yml
   with_items: "{{ openldap_users }}"
 
-- include_tasks: manage_specialuser.yml
-  with_items: "{{ openldap_specialusers }}"
-
-- include_tasks: manage_group.yml
-  with_items: "{{ openldap_groups }}"
+- include_tasks: manage_entry.yml
+  with_items: "{{ openldap_entries }}"
 
 - include_tasks: manage_ou.yml
   with_items: "{{ openldap_ous }}"
