@@ -1,0 +1,36 @@
+---
+
+- name: Generate Password
+  command: slappasswd -s "{{ item.userPassword }}"
+  register: command_output
+
+- name: Assign variables
+  set_fact:
+    openldap_userPassword: "{{ command_output.stdout }}"
+    openldap_default_user:
+      loginShell: /bin/bash
+      cn: "{{ item.uid }}"
+      homeDirectory: /home/{{ item.uid }}
+      gecos: "{{ item.uid }}"
+      shadowLastChange: 0
+      shadowMax: 0
+      shadowWarning: 0 
+
+- name: merging variables
+  set_fact: 
+    openldap_usersettings: "{{ openldap_default_user | combine(item) | combine({'userPassword' : openldap_userPassword}, recursive=True ) }}"
+
+- name: Modify ldap user
+  ldap_entry:
+    dn: uid={{ item.uid }},{{ openldap_specialuser_ou }}
+    bind_dn: cn=Admin,{{ openldap_domain }}
+    bind_pw: "{{ openldap_rootpw }}"
+    objectClass:
+      - inetOrgPerson
+      - top
+      - posixAccount
+      - shadowAccount
+    attributes: "{{ openldap_usersettings }}"
+    state: "{{ item.state | default('present') }}"
+
+
