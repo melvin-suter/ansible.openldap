@@ -3,7 +3,7 @@
 - name: Generate Password
   command: slappasswd -s "{{ item.userPassword }}"
   register: command_output
-  when: item.userPassword | default(-1) == -1
+  when: item.userPassword | default(-1) != -1
 
 - name: merging variables
   set_fact: 
