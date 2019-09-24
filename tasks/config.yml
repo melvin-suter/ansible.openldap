@@ -73,11 +73,39 @@
 
 - name: Create Tmp File
   template:
-    src: templates/activate_memberof.ldif.j2
+    src: templates/activate_memberof_1.ldif.j2
     dest: "{{ openldap_tmpldif }}"
 
-- name: Apply Domain Settings
+- name: Apply MemberOf Settings 
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_memberof_2.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply MemberOf Settings 
   command: ldapmodify -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_memberof_3.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply MemberOf Settings 
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
 
 - name: Delete Tmp File
   file:
