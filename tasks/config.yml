@@ -98,6 +98,38 @@
     path: "{{ openldap_tmpldif }}"
     state: absent
 
+
+#############
+# Refined
+#############
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_refined_1.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Refined Settings 
+  command: ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_refined_2.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Refined Settings 
+  command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
 #############
 # Basic Setup
 #############
