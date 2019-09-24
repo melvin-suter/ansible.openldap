@@ -78,6 +78,7 @@
 
 - name: Apply MemberOf Settings 
   command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
 
 - name: Delete Tmp File
   file:
@@ -92,6 +93,7 @@
 
 - name: Apply MemberOf Settings 
   command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
 
 - name: Delete Tmp File
   file:
@@ -110,6 +112,7 @@
 
 - name: Apply Refined Settings 
   command: ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
 
 - name: Delete Tmp File
   file:
@@ -124,6 +127,7 @@
 
 - name: Apply Refined Settings 
   command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
 
 - name: Delete Tmp File
   file:
