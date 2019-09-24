@@ -77,7 +77,7 @@
     dest: "{{ openldap_tmpldif }}"
 
 - name: Apply MemberOf Settings 
-  command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
 
 - name: Delete Tmp File
   file:
@@ -91,7 +91,7 @@
     dest: "{{ openldap_tmpldif }}"
 
 - name: Apply MemberOf Settings 
-  command: ldapmodify -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  command: ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
 
 - name: Delete Tmp File
   file:
@@ -105,7 +105,7 @@
     dest: "{{ openldap_tmpldif }}"
 
 - name: Apply MemberOf Settings 
-  command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
 
 - name: Delete Tmp File
   file:
