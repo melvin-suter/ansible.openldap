@@ -68,6 +68,23 @@
     state: absent
 
 #############
+# MemberOf Setup
+#############
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_memberof.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Domain Settings
+  command: ldapmodify -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+#############
 # Basic Setup
 #############
 
