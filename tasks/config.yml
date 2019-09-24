@@ -91,20 +91,6 @@
     dest: "{{ openldap_tmpldif }}"
 
 - name: Apply MemberOf Settings 
-  command: ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
-
-- name: Delete Tmp File
-  file:
-    path: "{{ openldap_tmpldif }}"
-    state: absent
-
-
-- name: Create Tmp File
-  template:
-    src: templates/activate_memberof_3.ldif.j2
-    dest: "{{ openldap_tmpldif }}"
-
-- name: Apply MemberOf Settings 
   command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
 
 - name: Delete Tmp File

@@ -1,3 +1,12 @@
-dn: cn=module{0},cn=config
-add: olcmoduleload
-olcmoduleload: refint
+dn: olcOverlay=memberof,olcDatabase={2}hdb,cn=config
+objectClass: olcMemberOf
+objectClass: olcOverlayConfig
+objectClass: olcConfig
+objectClass: top
+olcOverlay: memberof
+olcMemberOfDangling: ignore
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: groupOfNames
+olcMemberOfMemberAD: member
+olcMemberOfMemberOfAD: memberOf
+
