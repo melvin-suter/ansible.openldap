@@ -1,4 +1,5 @@
 ---
+openldap_public: no
 
 # Schemas
 openldap_schemas:
