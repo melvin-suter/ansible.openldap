@@ -10,6 +10,7 @@
     state: enabled
     permanent: yes
     immediate: yes
+  when: openldap_public == true
 
 - name: Create Folders
   file:
